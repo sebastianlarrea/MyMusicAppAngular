@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from 'app/services/api/api.service';
-import { Songs } from 'app/models/entities/songs.entities';
+import { RecentlyPlayedSongs } from 'app/models/entities/songs.entities';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class SpotifyService {
 
   constructor(private api: ApiService) {}
 
-  async getSongs(path: string): Promise<Songs[]> {
+  async getRecentlyPlayedSongs(path: string): Promise<RecentlyPlayedSongs[]> {
     return this.api
       .get(`${this.SPOTIFY_API_URL}${path}`, {})
       .then((response) => response.data.items)

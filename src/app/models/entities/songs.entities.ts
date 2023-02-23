@@ -1,4 +1,4 @@
-export interface Songs {
+export interface RecentlyPlayedSongs {
   track: Track;
   played_at: string;
   context: any;

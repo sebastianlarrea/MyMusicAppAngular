@@ -11,3 +11,5 @@ const SCOPES = [
 const REDIRECT_URI = 'http://localhost:4200/home';
 
 export const LOGIN_URL = `https://accounts.spotify.com/es-ES/authorize?client_id=${CLIENT_ID}&scope=${SCOPES}&redirect_uri=${REDIRECT_URI}&response_type=token&show_dialog=true`;
+
+export const RECENTLY_PLAYED = 'player/recently-played?limit=50';

@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Songs } from 'app/models/entities/songs.entities';
+import { RecentlyPlayedSongs } from 'app/models/entities/songs.entities';
 import { SpotifyService } from 'app/services/spotify/spotify.service';
+import { RECENTLY_PLAYED } from 'app/constants';
 
 @Component({
   selector: 'app-home',
+  template: `<div [title]="title">{{ title }}</div>`,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  songs: Songs[] = [];
+  recentlyPlayedSongs: RecentlyPlayedSongs[] = [];
 
   constructor(private spotifyService: SpotifyService) {}
 
   async ngOnInit() {
     window.location.hash && this.setAccessToken();
 
-    this.songs = await this.spotifyService.getSongs(
-      'player/recently-played?limit=50'
+    this.recentlyPlayedSongs = await this.spotifyService.getRecentlyPlayedSongs(
+      RECENTLY_PLAYED
     );
 
-    console.log(this.songs);
+    console.log(this.recentlyPlayedSongs);
   }
 
   private setAccessToken() {
